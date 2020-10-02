@@ -176,8 +176,20 @@ def player_stats(player_name)
 end
 
 def big_shoe_rebounds
- players = game_hash.values.map do |team|
-    team[:players]
-    end.flatten
-    binding.pry
+   biggest_shoe = 0 
+  game_hash.each do |location, team_stats|
+    team_stats[:players].each do |player_stats|
+      if player_stats[:shoe] > biggest_shoe
+        biggest_shoe = player_stats[:shoe]
+      end
+    end
+  end
+    
+    game_hash.each do |location, team_stats|
+    team_stats[:players].each do |player_stats|
+      if player_stats[:shoe] == biggest_shoe
+        return player_stats[:rebounds]
+      end
+    end
+  end
 end
