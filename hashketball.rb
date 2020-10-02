@@ -176,7 +176,7 @@ def player_stats(player_name)
 end
 
 def big_shoe_rebounds
- players = get_all_players.flatten
- players.flatten.flatten
- #binding.pry
+ players = game_hash.values.map do |team|
+    team[:players]
+    end.flatten
 end
